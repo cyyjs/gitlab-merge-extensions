@@ -95,7 +95,7 @@ function sendNotify ({ msg, data }, done) {
     body.text.mentioned_mobile_list = config.people
     body.text.content += `\n提交者：${data.currentUser}\n审核人：`
   } else {
-    body.text.mentioned_mobile_list = [data.currentUserTel]
+    body.text.mentioned_mobile_list = [data.authorTel]
     body.text.content = body.text.content + `\n提交者：${data.author}\n审核人：${data.currentUser}\nDone`
   }
   xhr.send(JSON.stringify(body))
@@ -107,35 +107,27 @@ $(function () {
     let author = $('.issuable-meta .author:first').text().trim()
     let issue = $('.js-source-branch').text().trim()
     let branch = $('.js-target-branch').text().trim()
-    let warning = branch === 'master' ? '【谨慎操作】' : ''
     let title = $('.detail-page-description>.title').text().trim()
     let description = $('.description textarea').text().trim()
-    let approves = $('.user-avatar-link').text()
-      .split(/\s+/)
-      .filter(user => !!user)
-      .map(user => '@' + user)
-      .join(' ') || '@所有人'
 
     let url = location.href
-    let project = url.match(/git.shuiditech.com\/(.+)\/merge_requests/)[1]
+    let project = url.match(/.com\/(.+)\/merge_requests/)[1]
     getConfig(config => {
       let data = {
         project,
         currentUser,
         author,
-        warning,
         branch,
         issue,
         title,
         url,
         description,
-        approves,
         config
       }
       getTemplate(template => {
         let msg = renderTemplate(template, data)
         getPeopleMap(map => {
-          data.currentUserTel = map[currentUser] || currentUser
+          data.authorTel = map[author] || author
           let result = {
             msg,
             data

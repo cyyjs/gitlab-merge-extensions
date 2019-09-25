@@ -55,11 +55,11 @@ export default {
   },
   computed: {
     privew () {
-      return this.msg.replace('__project__', 'frontend/bee/frontend')
+      return this.msg.replace('__project__', 'frontend')
         .replace('__branch__', 'master')
         .replace('__issue__', 'issue#1')
         .replace('__title__', '提交标题')
-        .replace('__url__', 'https://git.shuiditech.com/frontend/bee/frontend/merge_requests/106')
+        .replace('__url__', '')
         .replace('__description__', '内容描述') + '\n提交者：张三\n审核人：\n@李思'
     }
   },
