@@ -1,0 +1,47 @@
+{
+  "name": "GitLab MR",
+  "version": "1.0.0",
+  "description": "GitLab merge requests messages!",
+  "permissions": [
+    "activeTab",
+    "notifications",
+    "declarativeContent",
+    "storage",
+    "https://qyapi.weixin.qq.com/"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*/*/merge_requests/*"
+      ],
+      "run_at": "document_idle",
+      "css": [
+        "css/style.css"
+      ],
+      "js": [
+        "js/jquery.js",
+        "js/contentScript.js"
+      ]
+    }
+  ],
+  "browser_action": {
+    "default_icon": "images/128.png",
+    "default_title": "GitLab MR"
+  },
+  "options_ui": {
+    "page": "index.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "scripts": [
+      "js/background.js"
+    ]
+  },
+  "icons": {
+    "16": "images/16.png",
+    "32": "images/32.png",
+    "48": "images/48.png",
+    "128": "images/128.png"
+  },
+  "manifest_version": 2
+}

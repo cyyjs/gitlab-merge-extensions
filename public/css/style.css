@@ -1,0 +1,29 @@
+.copymr {
+  border: none;
+  background: #fc9403;
+  color: #fff;
+  font-size: 13px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  outline: none;
+  margin-left: 10px;
+}
+.copymr:hover {
+  background: rgb(218, 129, 6);
+}
+.copymr:focus {
+  outline: none;
+}
+.sendwx {
+  background: #13ADF0;
+}
+.sendwx:hover {
+  background: rgb(10, 170, 238);
+}
+
+.mrdone {
+  background: #00A14F;
+}
+.mrdone:hover {
+  background: rgba(0, 161, 78, 0.842);
+}
